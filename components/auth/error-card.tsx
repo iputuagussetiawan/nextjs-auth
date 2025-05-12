@@ -1,20 +1,17 @@
 import React from 'react'
-import Header from './header'
-import BackButton from './back-button'
-import { Card, CardFooter, CardHeader } from '../ui/card'
-
-
-
+import CardWrapper from './card-wrapper'
+import { BsExclamationTriangle } from 'react-icons/bs'
 const ErrorCard = () => {
   return (
-    <Card className='w-[400px] shadow-md'>
-      <CardHeader>
-        <Header label={"Something went wrong"} />
-      </CardHeader>
-      <CardFooter>
-        <BackButton label={"Back to login"} href={'/auth/login'} />
-      </CardFooter>
-    </Card>
+    <CardWrapper
+      headerLabel='Something went wrong'
+      backButtonLabel='Back to Login'
+      backButtonHref='/auth/login'
+    >
+      <div className='w-full flex justify-center items-center'>
+        <BsExclamationTriangle className='w-20 h-20 text-destructive' />
+      </div>
+    </CardWrapper>
   )
 }
 
