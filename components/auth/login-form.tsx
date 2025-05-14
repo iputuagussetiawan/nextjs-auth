@@ -38,7 +38,7 @@ const LoginForm = () => {
       .then((data)=>{
           setError(data?.error)
           //TODO [SCRUM-1] - add when we add 2FA
-          // setSuccess(data?.success)
+          setSuccess(data?.success)
       })
     })
   }
