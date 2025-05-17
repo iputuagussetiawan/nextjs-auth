@@ -8,9 +8,9 @@ export const generateVerificationToken =async (email: string) => {
     getVerificationTokenByEmail(email).then(async(existingToken) => {
         if (existingToken) {
             await db.verificationToken.delete({
-            where: {
-                id: existingToken.id
-            }
+                where: {
+                    id: existingToken.id
+                }
             });
         }
     });
