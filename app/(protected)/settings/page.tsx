@@ -8,8 +8,7 @@ const SettingPage = () => {
         logout()
     }
     return (
-        <div>
-            {JSON.stringify(user)}
+        <div className='bg-white p-10 rounded-xl'> 
             <button 
                 onClick={onClick} 
                 className='cursor-pointer p-4 bg-primary text-white hover:bg-primary/90 transition-all' 
