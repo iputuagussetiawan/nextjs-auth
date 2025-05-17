@@ -32,3 +32,16 @@ export const sendVerificationEmail=async(
     })
     
 }
+
+export const sendTwoFactorTokenEmail=async(
+    email:string,
+    token:string
+)=>{
+    await resend.emails.send({
+        from:"onboarding@resend.dev",
+        to:email,
+        subject:"Please confirm your email address (2FA Code)",
+        html:`<h1>Two Factor Authentication</h1>
+        <p>Use this token to login ${token}</p>`,
+    })
+}

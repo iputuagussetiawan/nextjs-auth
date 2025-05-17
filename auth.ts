@@ -4,6 +4,7 @@ import authConfig from "./auth.config"
 import { db } from "./lib/db"
 import { getUserById } from "./data/user"
 import { UserRole } from "@prisma/client"
+import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation"
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
     pages:{
@@ -43,6 +44,17 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             if(!existingUser?.emailVerified)return false
 
             //TODO [SCRUM-4] :ADD 2FA CHECK
+            if(existingUser.isTwoFactorEnabled){
+                const twoFactorConfirmation=await getTwoFactorConfirmationByUserId(existingUser.id)
+
+                console.log(twoFactorConfirmation)
+
+                if(!twoFactorConfirmation)return false
+
+                await db.twoFactorConfirmation.delete({
+                    where:{id:twoFactorConfirmation.id}
+                })
+            }
 
             return true
         },
