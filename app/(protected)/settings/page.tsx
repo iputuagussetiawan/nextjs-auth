@@ -1,15 +1,15 @@
 "use client"
 import { logout } from '@/actions/logout'
-import { useSession } from 'next-auth/react'
+import { useCurrentUser } from '@/hooks/use-current-user'
 import React from 'react'
 const SettingPage = () => {
-    const session =useSession()
+    const user =useCurrentUser()
     const onClick=()=>{
         logout()
     }
     return (
         <div>
-            {JSON.stringify(session)}
+            {JSON.stringify(user)}
             <button 
                 onClick={onClick} 
                 className='cursor-pointer p-4 bg-primary text-white hover:bg-primary/90 transition-all' 
