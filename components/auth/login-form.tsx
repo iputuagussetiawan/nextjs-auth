@@ -54,7 +54,7 @@ const LoginForm = () => {
       })
       .catch((error) => {
         console.log(error)
-        // setError("something went wrong")
+        setError("something went wrong")
       })
     })
   }

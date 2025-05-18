@@ -19,11 +19,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { UserRole } from '@prisma/client'
 
 const SettingPage = () => {
-    const user=useCurrentUser()
-    const {update}=useSession()
+   
+    const {update }=useSession()
     const [error,setError]=useState<string | undefined>("") 
     const [success,setSuccess]=useState<string | undefined>("") 
     const [isPending, startTransition] = useTransition()  
+    const user=useCurrentUser()
+    console.log(user)
 
     const form=useForm<z.infer<typeof SettingsSchema>>({
         resolver:zodResolver(SettingsSchema),

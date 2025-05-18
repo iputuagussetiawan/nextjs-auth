@@ -26,16 +26,6 @@ export const {
         }
     },
     callbacks:{
-        // async signIn({ user }) {
-        //     if (!user?.id) return false
-
-        //     const existingUser = await getUserById(user.id)
-        //     if (!existingUser || !existingUser.emailVerified) {
-        //         return false
-        //     }
-        //     return true
-        // },
-
         async signIn({ user, account }) {
             //allow OAuth without email verification
             if(account?.provider !=="credentials") return true
@@ -44,7 +34,7 @@ export const {
             if (!user?.id) return false
             const existingUser=await getUserById(user.id)
 
-            console.log(existingUser)
+            // console.log(existingUser)
 
             //prevent sign in if email is not verified
             if(!existingUser?.emailVerified)return false
@@ -52,9 +42,7 @@ export const {
             //TODO [SCRUM-4] :ADD 2FA CHECK
             if(existingUser.isTwoFactorEnabled){
                 const twoFactorConfirmation=await getTwoFactorConfirmationByUserId(existingUser.id)
-
-                console.log(twoFactorConfirmation)
-
+                console.log("twoFactorConfirmation", twoFactorConfirmation)
                 if(!twoFactorConfirmation)return false
 
                 await db.twoFactorConfirmation.delete({
@@ -86,10 +74,12 @@ export const {
                 session.user.email=token.email as string
                 session.user.isOauth=token.isOAuth as boolean
             }
+
+            // console.log(session)
             return session
         },
         async jwt({token}){
-          
+            // console.log("from Token",token)
             if(!token.sub){
                 return token
             }
