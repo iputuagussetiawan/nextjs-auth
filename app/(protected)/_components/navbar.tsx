@@ -29,7 +29,7 @@ const Navbar = () => {
           size={"sm"}
           asChild
         >
-          <Link href='/server'>Admin</Link>
+          <Link href='/admin'>Admin</Link>
         </Button>
         <Button 
           variant={pathname==='/settings'?"default":"outline"}
