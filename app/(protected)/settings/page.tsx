@@ -18,14 +18,15 @@ import { Switch } from '@/components/ui/switch'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { UserRole } from '@prisma/client'
 
+
+
 const SettingPage = () => {
-   
-    const {update }=useSession()
+    // const update =useSession()
     const [error,setError]=useState<string | undefined>("") 
     const [success,setSuccess]=useState<string | undefined>("") 
     const [isPending, startTransition] = useTransition()  
     const user=useCurrentUser()
-    console.log(user)
+    // console.log(update)
 
     const form=useForm<z.infer<typeof SettingsSchema>>({
         resolver:zodResolver(SettingsSchema),
@@ -47,7 +48,7 @@ const SettingPage = () => {
                 }
 
                 if(data.success){
-                    update();
+                    // update();
                     setSuccess(data.success)
                 }
             })

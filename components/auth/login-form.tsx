@@ -83,6 +83,7 @@ const LoginForm = () => {
                         <FormLabel>Two Factor Code</FormLabel>
                         <FormControl>
                           <Input 
+                            // {...form.register('code')}
                             disabled={isPending}
                             type='text'
                             placeholder='123456' {...field} />
