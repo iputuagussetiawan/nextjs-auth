@@ -22,7 +22,7 @@ const Navbar = () => {
           size={"sm"}
           asChild
         >
-          <Link href='/server'>Client</Link>
+          <Link href='/client'>Client</Link>
         </Button>
         <Button 
           variant={pathname==='/admin'?"default":"outline"}
